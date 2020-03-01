@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import Counter from "./Counter";
 
 
 export default class Container extends Component {
+  getStyle() {
+
+  }
+
   render() {
     return (
-      <Counter />
+      <div>
+        <p>container body</p>
+      </div>
     )
   }
 }

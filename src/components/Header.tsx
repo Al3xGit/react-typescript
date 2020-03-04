@@ -1,17 +1,23 @@
 import React from 'react'
 import CSS from 'csstype'
 
-export default function Header() {
+export default function Header(): JSX.Element {
 
   const headerStyle: CSS.Properties = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     width: '100%',
+    height: '64px',
     backgroundColor: '#44B',
-    padding: '10px'
   }
 
   const titleStyle: CSS.Properties = {
+    margin: '0px',
     textAlign: 'center',
-    color: '#FFF'
+    verticalAlign: 'middle',
+    color: '#FFF',
+    fontSize: '32px',
   }
 
   return (

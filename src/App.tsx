@@ -5,7 +5,8 @@ import CSS from 'csstype'
 
 function App() {
   const appStyle: CSS.Properties = {
-    backgroundColor: '#DDD'
+    backgroundColor: '#DDD',
+    height: '100vh',
   }
 
   return (

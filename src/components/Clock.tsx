@@ -1,14 +1,20 @@
-import React, { Component, createRef, useRef } from 'react'
+import React, { Component } from 'react'
 import CSS from 'csstype'
 
 interface ClockState { date: Date }
 
 export default class Clock extends Component<{}, ClockState> {
 
+  timerId: NodeJS.Timeout
+
   constructor(props: {}) {
     super(props)
     this.state = { date: new Date() }
-    setInterval(this.tick, 1000)
+    this.timerId = setInterval(this.tick, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId)
   }
 
   tick = () => {

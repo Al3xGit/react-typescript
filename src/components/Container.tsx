@@ -5,7 +5,6 @@ import Clock from "./Clock";
 
 export default class Container extends Component {
 
-
   render() {
     return (
       <div style={containerStyle}>
@@ -20,7 +19,9 @@ const containerStyle: CSS.Properties = {
   maxWidth: '1000px',
   margin: 'auto',
   marginTop: 0,
-  height: '100%',
+  minHeight: '400px',
   padding: '20px',
-  backgroundColor: '#CCC',
+  backgroundColor: '#99F',
+  border: '2px #77D solid',
+  borderTop: 'none'
 }

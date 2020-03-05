@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import CSS from 'csstype'
 import SearchBar from './SearchBar'
 import Clock from "./Clock";
+import SearchResult from "./SearchResult";
 
-interface ContainerState { searched: string }
-
-export default class Container extends Component<{}, ContainerState> {
+export default class Container extends Component {
 
   state = {
     searched: 'none'
@@ -15,8 +14,8 @@ export default class Container extends Component<{}, ContainerState> {
     return (
       <div style={containerStyle}>
         <Clock />
-        <SearchBar emitSearch={text => this.setState({ searched: text })} />
-        <p>Searched : {this.state.searched}</p>
+        <SearchBar />
+        <SearchResult />
       </div>
     )
   }

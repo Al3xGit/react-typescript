@@ -1,20 +1,21 @@
 import React, { Component, ChangeEvent, KeyboardEvent } from "react";
-
-interface SearchBarProps { emitSearch: (search: string) => void }
+import SearchService from '../services/SearchService'
 
 interface SearchBarState { searchedText: string }
 
-export default class SearchBar extends Component<SearchBarProps, SearchBarState> {
+export default class SearchBar extends Component<{}, SearchBarState> {
 
   state: SearchBarState = { searchedText: '' }
 
-  search = () => {
-    this.props.emitSearch(this.state.searchedText)
+  private searchService: SearchService = SearchService.getInstance()
+
+  sendSearch = () => {
+    this.searchService.searchFor(this.state.searchedText)
   }
 
   handleEnterDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-      this.search()
+      this.sendSearch()
     }
   }
 
@@ -34,7 +35,7 @@ export default class SearchBar extends Component<SearchBarProps, SearchBarState>
           onChange={this.changeSearch}
           onKeyDown={this.handleEnterDown}
         />
-        <button onClick={this.search}>Search</button>
+        <button onClick={this.sendSearch}>Search</button>
       </div>
     )
   }

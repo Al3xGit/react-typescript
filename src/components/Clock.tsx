@@ -24,6 +24,12 @@ export default class Clock extends Component<{}, ClockState> {
   }
 
   render(): JSX.Element {
+    const clockStyle: CSS.Properties = {
+      position: 'absolute',
+      right: '20px',
+      top: 0,
+    }
+
     return (
       <div style={clockStyle}>
         <p>il est {this.state.date.toLocaleTimeString()}</p>
@@ -31,8 +37,4 @@ export default class Clock extends Component<{}, ClockState> {
     )
   }
 
-}
-
-const clockStyle: CSS.Properties = {
-  float: 'right',
 }

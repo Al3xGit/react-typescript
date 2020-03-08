@@ -22,9 +22,10 @@ export default class Container extends Component {
 }
 
 const containerStyle: CSS.Properties = {
-  maxWidth: '1000px',
-  margin: 'auto',
-  marginTop: 0,
+  position: 'relative',
+  display: 'block',
+  maxWidth: '800px',
+  margin: '0 auto',
   minHeight: '400px',
   padding: '20px',
   backgroundColor: '#99F',

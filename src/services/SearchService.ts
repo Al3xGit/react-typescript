@@ -1,4 +1,5 @@
 import { ReplaySubject, NextObserver } from 'rxjs'
+import { debounceTime } from 'rxjs/operators'
 import Todo from '../model/Todo'
 
 export default class SearchService {
@@ -24,7 +25,9 @@ export default class SearchService {
    * @param observer 
    */
   subscribe(observer: NextObserver<Todo[]>) {
-    return this.searchResults$.subscribe(observer)
+    return this.searchResults$.pipe(
+      debounceTime(500)
+    ).subscribe(observer)
   }
 
   searchFor(searchedString: string): void {

@@ -1,42 +1,38 @@
-import React, { Component, ChangeEvent, KeyboardEvent } from "react";
+import React, { Component, ChangeEvent } from "react";
 import SearchService from '../services/SearchService'
+import CSS from 'csstype'
 
-interface SearchBarState { searchedText: string }
-
+interface SearchBarState {
+  inputValue: string
+}
 export default class SearchBar extends Component<{}, SearchBarState> {
 
-  state: SearchBarState = { searchedText: '' }
+  state = { inputValue: '' }
 
   private searchService: SearchService = SearchService.getInstance()
 
-  sendSearch = () => {
-    this.searchService.searchFor(this.state.searchedText)
-  }
-
-  handleEnterDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      this.sendSearch()
-    }
-  }
-
-  changeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      searchedText: e.currentTarget.value
-    })
+  sendSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    this.setState({ inputValue: e.target.value })
+    this.searchService.searchFor(this.state.inputValue.trim())
   }
 
   render(): JSX.Element {
+    const inputStyle: CSS.Properties = {
+      display: 'block',
+      width: '300px',
+      margin: '0 auto'
+    }
+
     return (
       <div>
         <input
+          style={inputStyle}
           type="text"
           placeholder="type something"
-          value={this.state.searchedText}
-          onChange={this.changeSearch}
-          onKeyDown={this.handleEnterDown}
+          value={this.state.inputValue}
+          onChange={this.sendSearch}
         />
-        <button onClick={this.sendSearch}>Search</button>
-      </div>
+      </div >
     )
   }
 }
